@@ -67,4 +67,11 @@ describe('_', function () {
             expect(result).to.equal(1);
         });
     });
+
+    // last
+  describe('#last', function() {
+    it('is a function', function() {
+      expect(_.last).to.be.a('function');
+    });
+  });
 });

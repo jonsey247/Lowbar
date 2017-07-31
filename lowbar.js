@@ -13,6 +13,19 @@ _.first = function(array, num) {
     }
 };
 
+// last
+_.last = function(array,num) {
+  if (num === undefined) {
+    return array[array.length - 1];
+  }
+  if (array.length < num) {
+    return array;
+  }
+  else {
+    return array.slice(array.length - num,array.length);
+  }
+};
+
 if (typeof module !== 'undefined') {
   module.exports = _;
 }
