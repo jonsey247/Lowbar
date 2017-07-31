@@ -144,6 +144,13 @@ describe('_', function () {
   describe('#filter', function() {
     it('is a function', function() {
       expect(_.filter).to.be.a('function');
-    });  
+    });
+
+    it('should return a list filtered by the predicate', function() {
+      var result = _.filter([1,2,3,4,5,6], function(num) {return num % 2 === 0;});
+      expect(result).to.eql([2,4,6]);
+      var result2 = _.filter({a:1, b:2, c:3, d:4, e:5, f:6}, function(num) {return num % 2 === 0;});
+      expect(result2).to.eql([2,4,6]);
+    });   
   });
 });
