@@ -115,4 +115,11 @@ describe('_', function () {
       expect(count).to.equal(5);
     });
   });
+
+  // indexOf
+  describe('#indexOf', function() {
+    it('is a function', function() {
+      expect(_.indexOf).to.be.a('function');
+    });
+  });
 });

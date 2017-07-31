@@ -33,6 +33,16 @@ _.each = function(list, func) {
   }
 };
 
+// indexOf
+_.indexOf = function(array, value, isSorted) {
+  if (isSorted === undefined) {
+    return array.indexOf(value); 
+  } else {
+    var sliced = array.slice(isSorted, array.length);
+    return sliced.indexOf(value);
+  }
+};
+
 if (typeof module !== 'undefined') {
   module.exports = _;
 }
