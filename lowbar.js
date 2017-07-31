@@ -43,6 +43,16 @@ _.indexOf = function(array, value, isSorted) {
   }
 };
 
+// filter
+_.filter = function(list, predicate) {
+  var result = [];
+  for (var key in list) {
+    if (predicate(list[key])) {
+      result.push(list[key]);
+    }
+  } return result;
+};
+
 if (typeof module !== 'undefined') {
   module.exports = _;
 }

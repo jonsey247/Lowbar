@@ -139,4 +139,11 @@ describe('_', function () {
       expect(result2).to.equal(1);
     });
   });
+
+  // filter
+  describe('#filter', function() {
+    it('is a function', function() {
+      expect(_.filter).to.be.a('function');
+    });  
+  });
 });
