@@ -105,5 +105,14 @@ describe('_', function () {
     it('is a function', function() {
       expect(_.each).to.be.a('function');
     });
+
+    it('should iterate through every item in the list', function() {
+      var count = 0;
+      function incrementCount() {
+        count++;
+      }
+      _.each([1,2,3,4,5], incrementCount);
+      expect(count).to.equal(5);
+    });
   });
 });
