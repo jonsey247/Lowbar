@@ -26,6 +26,13 @@ _.last = function(array,num) {
   }
 };
 
+// each
+_.each = function(list, func) {
+  for (var key in list) {
+    func(list[key]);
+  }
+};
+
 if (typeof module !== 'undefined') {
   module.exports = _;
 }

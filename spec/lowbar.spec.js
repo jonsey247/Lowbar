@@ -99,4 +99,11 @@ describe('_', function () {
       expect(result).to.equal(4);
     });
   });
+
+  // each
+  describe('#each', function() {
+    it('is a function', function() {
+      expect(_.each).to.be.a('function');
+    });
+  });
 });
