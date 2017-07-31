@@ -73,5 +73,30 @@ describe('_', function () {
     it('is a function', function() {
       expect(_.last).to.be.a('function');
     });
+
+    it('should return the last element in an array if no n parameter present', function() {
+      var result = _.last([1, 2, 3]);
+      expect(result).to.equal(3);
+    });
+
+    it('should return the last  n elements in an array if n parameter present', function() {
+      var result = _.last([1, 2, 3],2);
+      expect(result).to.eql([2,3]);
+    });
+
+    it('should return an array if n parameter is present', function() {
+      var result = _.last([4, 5, 6],2);
+      expect(result).to.eql([5,6]);
+    });
+
+    it('should return the array if n is greater than the length of the array',function() {
+      var result = _.last([1, 2, 3, 4],7);
+      expect(result).to.eql([1, 2, 3, 4]);
+    });
+
+    it('should receive an array', function() {
+      var result = _.last([1, 2, 3, 4]);
+      expect(result).to.equal(4);
+    });
   });
 });
