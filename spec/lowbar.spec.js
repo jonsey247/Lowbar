@@ -38,9 +38,33 @@ describe('_', function () {
     });
 
     // first
-    describe('#first', function() {
-        it('is a function', function() {
+    describe('#first', function () {
+        it('is a function', function () {
             expect(_.first).to.be.a('function');
         });
+        it('should return the first element in an array if no n parameter present', function () {
+            var result = _.first([1, 2, 3]);
+            expect(result).to.equal(1);
+        });
+
+        it('should return the first  n elements in an array if n parameter present', function () {
+            var result = _.first([1, 2, 3], 2);
+            expect(result).to.eql([1, 2]);
+        });
+
+        it('should return an array if n parameter is present', function () {
+            var result = _.first([4, 5, 6], 2);
+            expect(result).to.eql([4, 5]);
+        });
+
+        it('should return the array if n is greater than the length of the array', function () {
+            var result = _.first([1, 2, 3, 4], 7);
+            expect(result).to.eql([1, 2, 3, 4]);
+        });
+
+        it('should receive an array', function () {
+            var result = _.first([1, 2, 3, 4]);
+            expect(result).to.equal(1);
+        });
     });
- });
+});
