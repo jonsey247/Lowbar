@@ -121,5 +121,22 @@ describe('_', function () {
     it('is a function', function() {
       expect(_.indexOf).to.be.a('function');
     });
+
+    it('should return a number', function () {
+      var result = _.indexOf([1,2,3]);
+      expect(result).to.be.a('number');
+    });
+
+    it('should return the index of the given value within the array', function() {
+      var result = _.indexOf([1,2,3], 2);
+      expect(result).to.equal(1);
+    });
+
+    it('should return the index of the given value starting at a given index within the array', function() {
+      var result = _.indexOf([1,2,3,4,5,6,7], 6, 2);
+      expect(result).to.equal(3);
+      var result2 = _.indexOf([1,1,1,1,1,1,2,2,2,2,3,3,3,3,4,4,5,5,5], 3, 9);
+      expect(result2).to.equal(1);
+    });
   });
 });
