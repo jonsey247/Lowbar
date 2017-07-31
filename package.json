@@ -1,0 +1,21 @@
+{
+  "name": "lowbar",
+  "version": "1.0.0",
+  "description": "Lowbar and Advanced Lowbar, into one repository. These sprints involved implementing Underscore functions with pure JavaScript, and testing them in Mocha and Chai.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha ./spec/",
+    "lint": "eslint ./",
+    "posttest": "npm run lint",
+    "precommit": "npm test"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.1.0",
+    "eslint": "^4.3.0",
+    "husky": "^0.14.3",
+    "mocha": "^3.4.2",
+    "sinon": "^2.4.1"
+  }
+}
