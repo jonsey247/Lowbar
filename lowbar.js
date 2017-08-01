@@ -74,6 +74,21 @@ _.uniq = function(list) {
   return result;
 };
 
+// map
+_.map = function(list, iteratee) {
+  var result = [];
+  if (Array.isArray(list)) {
+    for (let i = 0; i < list.length; i++) {
+      result.push(iteratee(list[i]));
+    }
+  } else {
+    for (let key in list) {
+      result.push(iteratee(list[key]));
+    }
+  }
+  return result;
+};
+
 if (typeof module !== 'undefined') {
   module.exports = _;
 }

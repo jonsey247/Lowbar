@@ -69,114 +69,121 @@ describe('_', function () {
     });
 
     // last
-  describe('#last', function() {
-    it('is a function', function() {
-      expect(_.last).to.be.a('function');
+    describe('#last', function () {
+        it('is a function', function () {
+            expect(_.last).to.be.a('function');
+        });
+
+        it('should return the last element in an array if no n parameter present', function () {
+            var result = _.last([1, 2, 3]);
+            expect(result).to.equal(3);
+        });
+
+        it('should return the last  n elements in an array if n parameter present', function () {
+            var result = _.last([1, 2, 3], 2);
+            expect(result).to.eql([2, 3]);
+        });
+
+        it('should return an array if n parameter is present', function () {
+            var result = _.last([4, 5, 6], 2);
+            expect(result).to.eql([5, 6]);
+        });
+
+        it('should return the array if n is greater than the length of the array', function () {
+            var result = _.last([1, 2, 3, 4], 7);
+            expect(result).to.eql([1, 2, 3, 4]);
+        });
+
+        it('should receive an array', function () {
+            var result = _.last([1, 2, 3, 4]);
+            expect(result).to.equal(4);
+        });
     });
 
-    it('should return the last element in an array if no n parameter present', function() {
-      var result = _.last([1, 2, 3]);
-      expect(result).to.equal(3);
+    // each
+    describe('#each', function () {
+        it('is a function', function () {
+            expect(_.each).to.be.a('function');
+        });
+
+        it('should iterate through every item in the list', function () {
+            var count = 0;
+            function incrementCount() {
+                count++;
+            }
+            _.each([1, 2, 3, 4, 5], incrementCount);
+            expect(count).to.equal(5);
+        });
     });
 
-    it('should return the last  n elements in an array if n parameter present', function() {
-      var result = _.last([1, 2, 3],2);
-      expect(result).to.eql([2,3]);
+    // indexOf
+    describe('#indexOf', function () {
+        it('is a function', function () {
+            expect(_.indexOf).to.be.a('function');
+        });
+
+        it('should return a number', function () {
+            var result = _.indexOf([1, 2, 3]);
+            expect(result).to.be.a('number');
+        });
+
+        it('should return the index of the given value within the array', function () {
+            var result = _.indexOf([1, 2, 3], 2);
+            expect(result).to.equal(1);
+        });
+
+        it('should return the index of the given value starting at a given index within the array', function () {
+            var result = _.indexOf([1, 2, 3, 4, 5, 6, 7], 6, 2);
+            expect(result).to.equal(3);
+            var result2 = _.indexOf([1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 5, 5, 5], 3, 9);
+            expect(result2).to.equal(1);
+        });
     });
 
-    it('should return an array if n parameter is present', function() {
-      var result = _.last([4, 5, 6],2);
-      expect(result).to.eql([5,6]);
+    // filter
+    describe('#filter', function () {
+        it('is a function', function () {
+            expect(_.filter).to.be.a('function');
+        });
+
+        it('should return a list filtered by the predicate', function () {
+            var result = _.filter([1, 2, 3, 4, 5, 6], function (num) { return num % 2 === 0; });
+            expect(result).to.eql([2, 4, 6]);
+            var result2 = _.filter({ a: 1, b: 2, c: 3, d: 4, e: 5, f: 6 }, function (num) { return num % 2 === 0; });
+            expect(result2).to.eql([2, 4, 6]);
+        });
     });
 
-    it('should return the array if n is greater than the length of the array',function() {
-      var result = _.last([1, 2, 3, 4],7);
-      expect(result).to.eql([1, 2, 3, 4]);
+    // reject
+    describe('#reject', function () {
+        it('is a function', function () {
+            expect(_.reject).to.be.a('function');
+        });
+
+        it('should return a list filtered by the predicate', function () {
+            var result = _.reject([1, 2, 3, 4, 5, 6], function (num) { return num % 2 === 0; });
+            expect(result).to.eql([1, 3, 5]);
+            var result2 = _.reject({ a: 1, b: 2, c: 3, d: 4, e: 5, f: 6 }, function (num) { return num % 2 === 0; });
+            expect(result2).to.eql([1, 3, 5]);
+        });
     });
 
-    it('should receive an array', function() {
-      var result = _.last([1, 2, 3, 4]);
-      expect(result).to.equal(4);
-    });
-  });
+    // uniq
+    describe('#uniq', function () {
+        it('is a function', function () {
+            expect(_.uniq).to.be.a('function');
+        });
 
-  // each
-  describe('#each', function() {
-    it('is a function', function() {
-      expect(_.each).to.be.a('function');
-    });
-
-    it('should iterate through every item in the list', function() {
-      var count = 0;
-      function incrementCount() {
-        count++;
-      }
-      _.each([1,2,3,4,5], incrementCount);
-      expect(count).to.equal(5);
-    });
-  });
-
-  // indexOf
-  describe('#indexOf', function() {
-    it('is a function', function() {
-      expect(_.indexOf).to.be.a('function');
+        it('returns an array of unique values', function () {
+            var result = _.uniq([1, 2, 1, 4, 1, 3]);
+            expect(result).to.eql([1, 2, 4, 3]);
+        });
     });
 
-    it('should return a number', function () {
-      var result = _.indexOf([1,2,3]);
-      expect(result).to.be.a('number');
+    // map
+    describe('#map', function () {
+        it('is a function', function () {
+            expect(_.map).to.be.a('function');
+        });
     });
-
-    it('should return the index of the given value within the array', function() {
-      var result = _.indexOf([1,2,3], 2);
-      expect(result).to.equal(1);
-    });
-
-    it('should return the index of the given value starting at a given index within the array', function() {
-      var result = _.indexOf([1,2,3,4,5,6,7], 6, 2);
-      expect(result).to.equal(3);
-      var result2 = _.indexOf([1,1,1,1,1,1,2,2,2,2,3,3,3,3,4,4,5,5,5], 3, 9);
-      expect(result2).to.equal(1);
-    });
-  });
-
-  // filter
-  describe('#filter', function() {
-    it('is a function', function() {
-      expect(_.filter).to.be.a('function');
-    });
-
-    it('should return a list filtered by the predicate', function() {
-      var result = _.filter([1,2,3,4,5,6], function(num) {return num % 2 === 0;});
-      expect(result).to.eql([2,4,6]);
-      var result2 = _.filter({a:1, b:2, c:3, d:4, e:5, f:6}, function(num) {return num % 2 === 0;});
-      expect(result2).to.eql([2,4,6]);
-    });   
-  });
-
-  // reject
-  describe('#reject', function() {
-    it('is a function', function() {
-      expect(_.reject).to.be.a('function');
-    });
-
-    it('should return a list filtered by the predicate', function() {
-      var result = _.reject([1,2,3,4,5,6], function(num) {return num % 2 === 0;});
-      expect(result).to.eql([1,3,5]);
-      var result2 = _.reject({a:1, b:2, c:3, d:4, e:5, f:6}, function(num) {return num % 2 === 0;});
-      expect(result2).to.eql([1,3,5]);
-    });   
-  });
-
-  // uniq
-  describe('#uniq', function() {
-    it('is a function', function() {
-      expect(_.uniq).to.be.a('function');
-    }); 
-
-    it('returns an array of unique values', function () {
-      var result = _.uniq([1, 2, 1, 4, 1, 3]);
-      expect(result).to.eql([1, 2, 4, 3]);
-    });
-  });
 });
