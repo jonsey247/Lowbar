@@ -307,4 +307,11 @@ describe('_', function () {
             expect(spy.callCount).to.equal(1);
         });
     });
+
+    // memoize
+  describe('#memoize', function () {
+    it('is a function', function () {
+      expect(_.memoize).to.be.a('function');
+    });
+  });
 });
