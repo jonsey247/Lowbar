@@ -141,6 +141,11 @@ _.extend = function(destination, source) {
   return Object.assign({}, destination, source);
 };
 
+// defaults
+_.defaults = function(object, defaults) {
+  return Object.assign({}, defaults, object);
+};
+
 if (typeof module !== 'undefined') {
   module.exports = _;
 }

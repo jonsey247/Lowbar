@@ -280,4 +280,11 @@ describe('_', function () {
       expect(_.extend({name: 'steve'}, {age: 20})).to.eql({name: 'steve', age: 20});
     });
   });
+
+  // defaults
+  describe('#defaults', function() {
+    it('is a function', function() {
+      expect(_.defaults).to.be.a('function');
+    });
+  });
 });
