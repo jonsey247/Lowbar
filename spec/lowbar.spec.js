@@ -172,6 +172,11 @@ describe('_', function () {
   describe('#uniq', function() {
     it('is a function', function() {
       expect(_.uniq).to.be.a('function');
+    }); 
+
+    it('returns an array of unique values', function () {
+      var result = _.uniq([1, 2, 1, 4, 1, 3]);
+      expect(result).to.eql([1, 2, 4, 3]);
     });
   });
 });
