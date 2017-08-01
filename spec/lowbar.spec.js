@@ -222,5 +222,10 @@ describe('_', function () {
     it('is a function', function() {
       expect(_.pluck).to.be.a('function');
     });
+
+    it('returns an array of extracted values', function() {
+      var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
+      expect(_.pluck(stooges, 'name')).to.eql(['moe', 'larry', 'curly']);
+    });
   });
 });
