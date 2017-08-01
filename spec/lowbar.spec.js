@@ -167,4 +167,11 @@ describe('_', function () {
       expect(result2).to.eql([1,3,5]);
     });   
   });
+
+  // uniq
+  describe('#uniq', function() {
+    it('is a function', function() {
+      expect(_.uniq).to.be.a('function');
+    });
+  });
 });
