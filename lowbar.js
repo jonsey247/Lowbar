@@ -196,6 +196,15 @@ _.invoke = function (list, methodName) {
     });
 };
 
+// sortBy
+_.sortBy = function (list, iteratee) {
+    if (typeof(iteratee) === 'function') {
+      return list.sort(function(a,b) {return iteratee(a) - iteratee(b);});
+    } else {
+      return list.sort(function(a,b) {return a[iteratee] - b[iteratee];});
+  }
+};
+
 if (typeof module !== 'undefined') {
   module.exports = _;
 }
