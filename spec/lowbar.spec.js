@@ -191,4 +191,11 @@ describe('_', function () {
             expect(_.map({ one: 1, two: 2, three: 3 }, function (num) { return num * 3; })).to.eql([3, 6, 9]);
         });
     });
+
+    // contains
+    describe('#contains', function () {
+        it('is a function', function () {
+            expect(_.contains).to.be.a('function');
+        });
+    });
 });

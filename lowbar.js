@@ -89,6 +89,16 @@ _.map = function(list, iteratee) {
   return result;
 };
 
+// contains
+_.contains = function(array, target, fromIndex) {
+  var slice = array.slice(fromIndex);
+  if (slice.indexOf(target) !== -1) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
 if (typeof module !== 'undefined') {
   module.exports = _;
 }
