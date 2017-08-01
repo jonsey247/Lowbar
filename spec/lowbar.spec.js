@@ -191,11 +191,29 @@ describe('_', function () {
             expect(_.map({ one: 1, two: 2, three: 3 }, function (num) { return num * 3; })).to.eql([3, 6, 9]);
         });
     });
-
+    
     // contains
     describe('#contains', function () {
         it('is a function', function () {
             expect(_.contains).to.be.a('function');
+        });
+
+        it('should return true for contains([1,2,3], 3)', function () {
+            expect(_.contains([1, 2, 3], 3)).to.equal(true);
+        });
+
+        it('should return false for ([4,5,6], 7)', function () {
+            expect(_.contains([4, 5, 6], 7)).to.equal(false);
+        });
+
+        it('should start searching at the index provided as the third argument', function () {
+            it('should return false for ([1,2,3], 1, 1)', function () {
+                expect(_.contains([1, 2, 3], 1, 1)).to.equal(false);
+            });
+
+            it('should return true for contains([1,2,3,1], 1, 2)', function () {
+                expect(_.contains([1, 2, 3, 1], 1, 2)).to.equal(true);
+            });
         });
     });
 });
