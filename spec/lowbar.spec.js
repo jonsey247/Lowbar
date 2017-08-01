@@ -245,5 +245,13 @@ describe('_', function () {
     it('is a function', function() {
       expect(_.every).to.be.a('function');
     });
+
+    it('returns false if not all list values pass the predicate test', function() {
+      expect(_.every([2, 4, 5], function(num) { return num % 2 == 0; })).to.equal(false);
+    });
+
+    it('returns true if all list values pass the predicate test', function() {
+      expect(_.every([2, 4], function(num) { return num % 2 == 0; })).to.equal(true);
+    });
   });
 });
