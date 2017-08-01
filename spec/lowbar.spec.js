@@ -353,4 +353,11 @@ describe('_', function () {
       expect(_.invoke([[5, 1, 7], [3, 2, 1]], 'sort')).to.eql([[1, 5, 7], [1, 2, 3]]);
     });
   });
+
+  // sortBy
+  describe('#sortBy', function () {
+    it('is a function', function () {
+      expect(_.sortBy).to.be.a('function');
+    });
+  });
 });
