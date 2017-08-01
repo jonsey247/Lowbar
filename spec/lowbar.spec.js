@@ -216,4 +216,11 @@ describe('_', function () {
             });
         });
     });
+
+    // pluck
+  describe('#pluck', function() {
+    it('is a function', function() {
+      expect(_.pluck).to.be.a('function');
+    });
+  });
 });

@@ -99,6 +99,17 @@ _.contains = function(array, target, fromIndex) {
   }
 };
 
+// ADVANCED LOWBAR
+
+// pluck
+_.pluck = function(list, propertyName) {
+  var result = [];
+  for (let i = 0; i < list.length; i++) {
+    result.push(list[i][propertyName]);
+  }
+  return result;
+};
+
 if (typeof module !== 'undefined') {
   module.exports = _;
 }
