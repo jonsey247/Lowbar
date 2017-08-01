@@ -205,6 +205,20 @@ _.sortBy = function (list, iteratee) {
   }
 };
 
+// zip
+_.zip = function () {
+  var argumentsArray = Array.prototype.slice.call(arguments);
+  var longestArray = argumentsArray.sort(function(a, b) {
+    return b.length - a.length;
+  })[0];
+
+  return longestArray.map(function(value, index) {
+    return argumentsArray.map(function(val) {
+      return val[index];
+    });
+  });
+};
+
 if (typeof module !== 'undefined') {
   module.exports = _;
 }

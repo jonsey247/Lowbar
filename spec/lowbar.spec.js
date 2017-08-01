@@ -364,4 +364,11 @@ describe('_', function () {
       expect(_.sortBy([1, 2, 3, 4, 5, 6], function(num) { return Math.sin(num); })).to.eql([5, 4, 6, 3, 1, 2]);
     });
   });
+
+  // zip
+  describe('#zip', function () {
+    it('is a function', function () {
+      expect(_.zip).to.be.a('function');
+    }); 
+  });
 });
