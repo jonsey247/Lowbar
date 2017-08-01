@@ -191,7 +191,7 @@ describe('_', function () {
             expect(_.map({ one: 1, two: 2, three: 3 }, function (num) { return num * 3; })).to.eql([3, 6, 9]);
         });
     });
-    
+
     // contains
     describe('#contains', function () {
         it('is a function', function () {
@@ -218,78 +218,85 @@ describe('_', function () {
     });
 
     // pluck
-  describe('#pluck', function() {
-    it('is a function', function() {
-      expect(_.pluck).to.be.a('function');
+    describe('#pluck', function () {
+        it('is a function', function () {
+            expect(_.pluck).to.be.a('function');
+        });
+
+        it('returns an array of extracted values', function () {
+            var stooges = [{ name: 'moe', age: 40 }, { name: 'larry', age: 50 }, { name: 'curly', age: 60 }];
+            expect(_.pluck(stooges, 'name')).to.eql(['moe', 'larry', 'curly']);
+        });
     });
 
-    it('returns an array of extracted values', function() {
-      var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
-      expect(_.pluck(stooges, 'name')).to.eql(['moe', 'larry', 'curly']);
-    });
-  });
+    // reduce
+    describe('#reduce', function () {
+        it('is a function', function () {
+            expect(_.reduce).to.be.a('function');
+        });
 
-  // reduce
-  describe('#reduce', function() {
-    it('is a function', function() {
-      expect(_.reduce).to.be.a('function');
-    });
-
-    it('reduces a list to a single value', function() {
-      expect(_.reduce([1, 2, 3], function(memo, num) { return memo + num; }, 0)).to.equal(6);
-    });
-  });
-
-  // every
-  describe('#every', function() {
-    it('is a function', function() {
-      expect(_.every).to.be.a('function');
+        it('reduces a list to a single value', function () {
+            expect(_.reduce([1, 2, 3], function (memo, num) { return memo + num; }, 0)).to.equal(6);
+        });
     });
 
-    it('returns false if not all list values pass the predicate test', function() {
-      expect(_.every([2, 4, 5], function(num) { return num % 2 == 0; })).to.equal(false);
+    // every
+    describe('#every', function () {
+        it('is a function', function () {
+            expect(_.every).to.be.a('function');
+        });
+
+        it('returns false if not all list values pass the predicate test', function () {
+            expect(_.every([2, 4, 5], function (num) { return num % 2 == 0; })).to.equal(false);
+        });
+
+        it('returns true if all list values pass the predicate test', function () {
+            expect(_.every([2, 4], function (num) { return num % 2 == 0; })).to.equal(true);
+        });
     });
 
-    it('returns true if all list values pass the predicate test', function() {
-      expect(_.every([2, 4], function(num) { return num % 2 == 0; })).to.equal(true);
-    });
-  });
+    // some
+    describe('#some', function () {
+        it('is a function', function () {
+            expect(_.some).to.be.a('function');
+        });
 
-  // some
-  describe('#some', function() {
-    it('is a function', function() {
-      expect(_.some).to.be.a('function');
-    });
+        it('returns true if some list values pass the predicate test', function () {
+            expect(_.some([2, 4, 5], function (num) { return num % 2 == 0; })).to.equal(true);
+        });
 
-    it('returns true if some list values pass the predicate test', function() {
-      expect(_.some([2, 4, 5], function(num) { return num % 2 == 0; })).to.equal(true);
-    });
-
-    it('returns false if none of the list values pass the predicate test', function() {
-      expect(_.some([1, 3, 5], function(num) { return num % 2 == 0; })).to.equal(false);
-    });
-  });
-
-  // extend
-  describe('#extend', function() {
-    it('is a function', function() {
-      expect(_.extend).to.be.a('function');
+        it('returns false if none of the list values pass the predicate test', function () {
+            expect(_.some([1, 3, 5], function (num) { return num % 2 == 0; })).to.equal(false);
+        });
     });
 
-    it('copies properties from the source object into the destination object', function() {
-      expect(_.extend({name: 'steve'}, {age: 20})).to.eql({name: 'steve', age: 20});
-    });
-  });
+    // extend
+    describe('#extend', function () {
+        it('is a function', function () {
+            expect(_.extend).to.be.a('function');
+        });
 
-  // defaults
-  describe('#defaults', function() {
-    it('is a function', function() {
-      expect(_.defaults).to.be.a('function');
+        it('copies properties from the source object into the destination object', function () {
+            expect(_.extend({ name: 'steve' }, { age: 20 })).to.eql({ name: 'steve', age: 20 });
+        });
     });
 
-    it('fills in properties in object with values from defaults', function() {
-      var iceCream = {flavor: 'chocolate'};
-      expect(_.defaults(iceCream, {flavor: 'vanilla', sprinkles: 'lots'})).to.eql({flavor: 'chocolate', sprinkles: 'lots'});
+    // defaults
+    describe('#defaults', function () {
+        it('is a function', function () {
+            expect(_.defaults).to.be.a('function');
+        });
+
+        it('fills in properties in object with values from defaults', function () {
+            var iceCream = { flavor: 'chocolate' };
+            expect(_.defaults(iceCream, { flavor: 'vanilla', sprinkles: 'lots' })).to.eql({ flavor: 'chocolate', sprinkles: 'lots' });
+        });
     });
-  });
+
+    // once
+    describe('#once', function () {
+        it('is a function', function () {
+            expect(_.once).to.be.a('function');
+        });
+    });
 });

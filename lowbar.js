@@ -146,6 +146,19 @@ _.defaults = function(object, defaults) {
   return Object.assign({}, defaults, object);
 };
 
+// ADVANCED LOWBAR
+
+// once
+_.once = function (arg) {
+    var called = false;
+    return function () {
+        if (called === false) {
+            called = true;
+            return arg.apply(null, arguments);
+        } 
+    };
+};
+
 if (typeof module !== 'undefined') {
   module.exports = _;
 }
