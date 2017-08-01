@@ -173,6 +173,21 @@ _.memoize = function (fn, hashFunction) {
     return newFunc;
 };
 
+// shuffle
+_.shuffle = function (list) {
+    var arrayCopy = Array.prototype.slice.call(list);
+
+    var results = [];
+
+    for (var i = 0; i < list.length; i++) {
+      var random = Math.floor(Math.random() * arrayCopy.length);
+      results.push(arrayCopy[random]);
+      arrayCopy.splice(random,1);
+    }
+
+    return results;
+};
+
 if (typeof module !== 'undefined') {
   module.exports = _;
 }
