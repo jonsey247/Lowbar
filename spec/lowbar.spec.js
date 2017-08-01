@@ -286,5 +286,10 @@ describe('_', function () {
     it('is a function', function() {
       expect(_.defaults).to.be.a('function');
     });
+
+    it('fills in properties in object with values from defaults', function() {
+      var iceCream = {flavor: 'chocolate'};
+      expect(_.defaults(iceCream, {flavor: 'vanilla', sprinkles: 'lots'})).to.eql({flavor: 'chocolate', sprinkles: 'lots'});
+    });
   });
 });
