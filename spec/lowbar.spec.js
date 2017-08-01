@@ -254,4 +254,11 @@ describe('_', function () {
       expect(_.every([2, 4], function(num) { return num % 2 == 0; })).to.equal(true);
     });
   });
+
+  // some
+  describe('#some', function() {
+    it('is a function', function() {
+      expect(_.some).to.be.a('function');
+    });
+  });
 });
