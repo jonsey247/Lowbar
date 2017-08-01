@@ -228,4 +228,11 @@ describe('_', function () {
       expect(_.pluck(stooges, 'name')).to.eql(['moe', 'larry', 'curly']);
     });
   });
+
+  // reduce
+  describe('#reduce', function() {
+    it('is a function', function() {
+      expect(_.reduce).to.be.a('function');
+    });
+  });
 });

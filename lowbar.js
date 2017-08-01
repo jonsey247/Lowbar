@@ -99,8 +99,6 @@ _.contains = function(array, target, fromIndex) {
   }
 };
 
-// ADVANCED LOWBAR
-
 // pluck
 _.pluck = function(list, propertyName) {
   var result = [];
@@ -108,6 +106,14 @@ _.pluck = function(list, propertyName) {
     result.push(list[i][propertyName]);
   }
   return result;
+};
+
+// reduce
+_.reduce = function(list, iteratee, memo) {
+  for (let i = 0; i < list.length; i++) {
+    memo = iteratee(memo, list[i]);
+  }
+  return memo;
 };
 
 if (typeof module !== 'undefined') {
