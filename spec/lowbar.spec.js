@@ -342,4 +342,11 @@ describe('_', function () {
             expect(_.shuffle([1, 2, 3, 4, 5, 6])).to.not.eql([1, 2, 3, 4, 5, 6]);
         });
     });
+
+    // invoke
+  describe('#invoke', function () {
+    it('is a function', function () {
+      expect(_.invoke).to.be.a('function');
+    });
+  });
 });
