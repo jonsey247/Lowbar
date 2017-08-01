@@ -239,4 +239,11 @@ describe('_', function () {
       expect(_.reduce([1, 2, 3], function(memo, num) { return memo + num; }, 0)).to.equal(6);
     });
   });
+
+  // every
+  describe('#every', function() {
+    it('is a function', function() {
+      expect(_.every).to.be.a('function');
+    });
+  });
 });
