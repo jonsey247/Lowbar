@@ -136,6 +136,11 @@ _.some = function(list, predicate) {
   return false;
 };
 
+// extend
+_.extend = function(destination, source) {
+  return Object.assign({}, destination, source);
+};
+
 if (typeof module !== 'undefined') {
   module.exports = _;
 }

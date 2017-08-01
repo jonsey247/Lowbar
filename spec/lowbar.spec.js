@@ -269,4 +269,15 @@ describe('_', function () {
       expect(_.some([1, 3, 5], function(num) { return num % 2 == 0; })).to.equal(false);
     });
   });
+
+  // extend
+  describe('#extend', function() {
+    it('is a function', function() {
+      expect(_.extend).to.be.a('function');
+    });
+
+    it('copies properties from the source object into the destination object', function() {
+      expect(_.extend({name: 'steve'}, {age: 20})).to.eql({name: 'steve', age: 20});
+    });
+  });
 });
