@@ -153,4 +153,11 @@ describe('_', function () {
       expect(result2).to.eql([2,4,6]);
     });   
   });
+
+  // reject
+  describe('#reject', function() {
+    it('is a function', function() {
+      expect(_.reject).to.be.a('function');
+    });   
+  });
 });
