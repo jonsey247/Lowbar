@@ -397,4 +397,11 @@ describe('_', function () {
       expect(_.flatten([1, [2], [3, [[4]]]])).to.eql([1, 2, 3, 4]);
     });
   });
+
+  // intersection
+  describe('#intersection', function () {
+    it('is a function', function () {
+      expect(_.intersection).to.be.a('function');
+    });
+  });
 });

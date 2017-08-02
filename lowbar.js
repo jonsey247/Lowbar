@@ -246,6 +246,32 @@ _.flatten = function (list) {
   return result;
 };
 
+// intersection
+_.intersection = function () {
+  var argumentsArray = Array.prototype.slice.call(arguments);
+
+    var result = [];
+
+    _.each(argumentsArray[0], function(item) {
+        var isShared = false;
+
+      for (var i = 1; i < argumentsArray.length; i++) {
+        _.each(argumentsArray[i], function(check) {
+          if (item === check) {
+            isShared = true;
+          }
+        });
+      }
+
+      if (isShared) {
+        result.push(item);
+      }
+
+    });
+
+    return result;
+};
+
 if (typeof module !== 'undefined') {
   module.exports = _;
 }
