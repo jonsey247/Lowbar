@@ -272,6 +272,31 @@ _.intersection = function () {
     return result;
 };
 
+// difference
+_.difference = function (list) {
+  var argumentsArray = Array.prototype.slice.call(arguments);
+    var results = [];
+
+    _.each(list, function(item) {
+      var isUnique = true;
+
+      for (var i = 1; i < argumentsArray.length; i++) {
+        for (var j = 0; j < argumentsArray[i].length; j++) {
+          if (item === argumentsArray[i][j]) {
+            isUnique = false;
+          }
+        }
+      }
+
+      if (isUnique) {
+        results.push(item);
+      }
+
+    });
+
+    return results;
+};
+
 if (typeof module !== 'undefined') {
   module.exports = _;
 }

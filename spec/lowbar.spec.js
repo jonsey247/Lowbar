@@ -408,4 +408,11 @@ describe('_', function () {
       expect(_.intersection([1, 2, 3], [101, 2, 1, 10], [2, 1])).to.eql([1,2]);
     });
   });
+
+  // difference
+  describe('#difference', function () {
+    it('is a function', function () {
+      expect(_.difference).to.be.a('function');
+    });
+  });
 });
