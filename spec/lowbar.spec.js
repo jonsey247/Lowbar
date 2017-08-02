@@ -344,35 +344,53 @@ describe('_', function () {
     });
 
     // invoke
-  describe('#invoke', function () {
+    describe('#invoke', function () {
+        it('is a function', function () {
+            expect(_.invoke).to.be.a('function');
+        });
+
+        it('calls the method on each list value', function () {
+            expect(_.invoke([[5, 1, 7], [3, 2, 1]], 'sort')).to.eql([[1, 5, 7], [1, 2, 3]]);
+        });
+    });
+
+    // sortBy
+    describe('#sortBy', function () {
+        it('is a function', function () {
+            expect(_.sortBy).to.be.a('function');
+        });
+
+        it('returns a list sorted by function', function () {
+            expect(_.sortBy([1, 2, 3, 4, 5, 6], function (num) { return Math.sin(num); })).to.eql([5, 4, 6, 3, 1, 2]);
+        });
+    });
+
+    // zip
+    describe('#zip', function () {
+        it('is a function', function () {
+            expect(_.zip).to.be.a('function');
+        });
+
+        it('zips together two arrays with elements of the same index paired together', function () {
+            expect(_.zip(['a', 'b', 'c', 'd'], [1, 2, 3])).to.eql([['a', 1], ['b', 2], ['c', 3], ['d', undefined]]);
+        });
+    });
+
+    // sortedIndex
+    // describe('#sortedIndex', function () {
+    //     it('is a function', function () {
+    //         expect(_.sortedIndex).to.be.a('function');
+    //     });
+
+    //     it(' determine the index at which the value should be inserted into the list in order to maintain the list\'s sorted order', function () {
+    //         expect(_.sortedIndex([10, 20, 30, 40, 50], 35)).to.equal(3)
+    //     })
+    // });
+
+    // flatten
+  describe('#flatten', function () {
     it('is a function', function () {
-      expect(_.invoke).to.be.a('function');
-    });
-
-    it('calls the method on each list value', function() {
-      expect(_.invoke([[5, 1, 7], [3, 2, 1]], 'sort')).to.eql([[1, 5, 7], [1, 2, 3]]);
-    });
-  });
-
-  // sortBy
-  describe('#sortBy', function () {
-    it('is a function', function () {
-      expect(_.sortBy).to.be.a('function');
-    });
-
-    it('returns a list sorted by function', function() {
-      expect(_.sortBy([1, 2, 3, 4, 5, 6], function(num) { return Math.sin(num); })).to.eql([5, 4, 6, 3, 1, 2]);
-    });
-  });
-
-  // zip
-  describe('#zip', function () {
-    it('is a function', function () {
-      expect(_.zip).to.be.a('function');
-    }); 
-
-    it('zips together two arrays with elements of the same index paired together', function() {
-      expect(_.zip(['a','b','c','d'], [1,2,3])).to.eql([['a',1], ['b',2], ['c',3], ['d',undefined]]);
+      expect(_.flatten).to.be.a('function');
     });
   });
 });

@@ -219,6 +219,33 @@ _.zip = function () {
   });
 };
 
+// sortedIndex
+/* _.sortedIndex = function(array, obj, iteratee, context) {
+    iteratee = (iteratee, context, 1);
+    var value = iteratee(obj);
+    var low = 0, high = getLength(array);
+    while (low < high) {
+      var mid = Math.floor((low + high) / 2);
+      if (iteratee(array[mid]) < value) low = mid + 1; 
+      else high = mid;
+    }
+    return low;
+  }; */
+
+  // flatten
+_.flatten = function (list) {
+  var result = [];
+  for (var i = 0; i < list.length; i++) {
+    if (Array.isArray(list[i])) {
+      var temp = _.flatten(list[i]);
+      temp.forEach(function(value) { result.push(value); });
+    } else {
+      result.push(list[i]);
+    }
+  }
+  return result;
+};
+
 if (typeof module !== 'undefined') {
   module.exports = _;
 }
