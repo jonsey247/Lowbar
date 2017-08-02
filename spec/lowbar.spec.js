@@ -414,5 +414,9 @@ describe('_', function () {
     it('is a function', function () {
       expect(_.difference).to.be.a('function');
     });
+
+    it('returns the values from the first array that are not present in the other arrays', function() {
+      expect(_.difference([1, 2, 3, 4, 5], [5, 2, 10])).to.eql([1,3,4]);
+    });
   });
 });
