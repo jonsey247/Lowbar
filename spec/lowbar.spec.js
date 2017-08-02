@@ -392,5 +392,9 @@ describe('_', function () {
     it('is a function', function () {
       expect(_.flatten).to.be.a('function');
     });
+
+    it('returns a flattened array', function() {
+      expect(_.flatten([1, [2], [3, [[4]]]])).to.eql([1, 2, 3, 4]);
+    });
   });
 });
