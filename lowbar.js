@@ -1,20 +1,20 @@
 var _ = {};
 // identity
-_.identity = function(x) {
-    return x;
+_.identity = function (x) {
+  return x;
 };
 
 // first
-_.first = function(array, num) {
-    if (num === undefined) {
-        return array[0];
-    } else {
-        return array.slice(0, num);
-    }
+_.first = function (array, num) {
+  if (num === undefined) {
+    return array[0];
+  } else {
+    return array.slice(0, num);
+  }
 };
 
 // last
-_.last = function(array,num) {
+_.last = function (array, num) {
   if (num === undefined) {
     return array[array.length - 1];
   }
@@ -22,21 +22,21 @@ _.last = function(array,num) {
     return array;
   }
   else {
-    return array.slice(array.length - num,array.length);
+    return array.slice(array.length - num, array.length);
   }
 };
 
 // each
-_.each = function(list, func) {
+_.each = function (list, func) {
   for (var key in list) {
     func(list[key]);
   }
 };
 
 // indexOf
-_.indexOf = function(array, value, isSorted) {
+_.indexOf = function (array, value, isSorted) {
   if (isSorted === undefined) {
-    return array.indexOf(value); 
+    return array.indexOf(value);
   } else {
     var sliced = array.slice(isSorted, array.length);
     return sliced.indexOf(value);
@@ -44,7 +44,7 @@ _.indexOf = function(array, value, isSorted) {
 };
 
 // filter
-_.filter = function(list, predicate) {
+_.filter = function (list, predicate) {
   var result = [];
   for (var key in list) {
     if (predicate(list[key])) {
@@ -54,7 +54,7 @@ _.filter = function(list, predicate) {
 };
 
 // reject 
-_.reject = function(list, predicate) {
+_.reject = function (list, predicate) {
   var result = [];
   for (var key in list) {
     if (!predicate(list[key])) {
@@ -64,7 +64,7 @@ _.reject = function(list, predicate) {
 };
 
 // uniq
-_.uniq = function(list) {
+_.uniq = function (list) {
   var result = [];
   for (let i = 0; i < list.length; i++) {
     if (result.indexOf(list[i]) === -1) {
@@ -75,7 +75,7 @@ _.uniq = function(list) {
 };
 
 // map
-_.map = function(list, iteratee) {
+_.map = function (list, iteratee) {
   var result = [];
   if (Array.isArray(list)) {
     for (let i = 0; i < list.length; i++) {
@@ -90,7 +90,7 @@ _.map = function(list, iteratee) {
 };
 
 // contains
-_.contains = function(array, target, fromIndex) {
+_.contains = function (array, target, fromIndex) {
   var slice = array.slice(fromIndex);
   if (slice.indexOf(target) !== -1) {
     return true;
@@ -100,7 +100,7 @@ _.contains = function(array, target, fromIndex) {
 };
 
 // pluck
-_.pluck = function(list, propertyName) {
+_.pluck = function (list, propertyName) {
   var result = [];
   for (let i = 0; i < list.length; i++) {
     result.push(list[i][propertyName]);
@@ -109,7 +109,7 @@ _.pluck = function(list, propertyName) {
 };
 
 // reduce
-_.reduce = function(list, iteratee, memo) {
+_.reduce = function (list, iteratee, memo) {
   for (let i = 0; i < list.length; i++) {
     memo = iteratee(memo, list[i]);
   }
@@ -117,7 +117,7 @@ _.reduce = function(list, iteratee, memo) {
 };
 
 // every
-_.every = function(list, predicate) {
+_.every = function (list, predicate) {
   for (let i = 0; i < list.length; i++) {
     if (!predicate(list[i])) {
       return false;
@@ -127,8 +127,8 @@ _.every = function(list, predicate) {
 };
 
 // some
-_.some = function(list, predicate) {
-    for (let i = 0; i < list.length; i++) {
+_.some = function (list, predicate) {
+  for (let i = 0; i < list.length; i++) {
     if (predicate(list[i])) {
       return true;
     }
@@ -137,12 +137,12 @@ _.some = function(list, predicate) {
 };
 
 // extend
-_.extend = function(destination, source) {
+_.extend = function (destination, source) {
   return Object.assign({}, destination, source);
 };
 
 // defaults
-_.defaults = function(object, defaults) {
+_.defaults = function (object, defaults) {
   return Object.assign({}, defaults, object);
 };
 
@@ -150,95 +150,95 @@ _.defaults = function(object, defaults) {
 
 // once
 _.once = function (arg) {
-    var called = false;
-    return function () {
-        if (called === false) {
-            called = true;
-            return arg.apply(null, arguments);
-        } 
-    };
+  var called = false;
+  return function () {
+    if (called === false) {
+      called = true;
+      return arg.apply(null, arguments);
+    }
+  };
 };
 
 // memoize
 _.memoize = function (fn, hashFunction) {
-    var cache = {};
-    var newFunc = function (key) {
-        var finalKey = hashFunction ? hashFunction.apply(null, arguments) : key;
-        if (!(finalKey in cache)) {
-            cache[finalKey] = fn.apply(null,arguments);
+  var cache = {};
+  var newFunc = function (key) {
+    var finalKey = hashFunction ? hashFunction.apply(null, arguments) : key;
+    if (!(finalKey in cache)) {
+      cache[finalKey] = fn.apply(null, arguments);
     }
-        return cache[finalKey]; 
-    };
-    newFunc.cache = cache;
-    return newFunc;
+    return cache[finalKey];
+  };
+  newFunc.cache = cache;
+  return newFunc;
 };
 
 // shuffle
 _.shuffle = function (list) {
-    var arrayCopy = Array.prototype.slice.call(list);
+  var arrayCopy = Array.prototype.slice.call(list);
 
-    var results = [];
+  var results = [];
 
-    for (var i = 0; i < list.length; i++) {
-      var random = Math.floor(Math.random() * arrayCopy.length);
-      results.push(arrayCopy[random]);
-      arrayCopy.splice(random,1);
-    }
+  for (var i = 0; i < list.length; i++) {
+    var random = Math.floor(Math.random() * arrayCopy.length);
+    results.push(arrayCopy[random]);
+    arrayCopy.splice(random, 1);
+  }
 
-    return results;
+  return results;
 };
 
 // invoke
 _.invoke = function (list, methodName) {
-    var args = [].slice.call(arguments, 2);
-    return list.map(function (ele) {
-        return ele[methodName] ? ele[methodName].apply(ele, args) : undefined;
-    });
+  var args = [].slice.call(arguments, 2);
+  return list.map(function (ele) {
+    return ele[methodName] ? ele[methodName].apply(ele, args) : undefined;
+  });
 };
 
 // sortBy
 _.sortBy = function (list, iteratee) {
-    if (typeof(iteratee) === 'function') {
-      return list.sort(function(a,b) {return iteratee(a) - iteratee(b);});
-    } else {
-      return list.sort(function(a,b) {return a[iteratee] - b[iteratee];});
+  if (typeof (iteratee) === 'function') {
+    return list.sort(function (a, b) { return iteratee(a) - iteratee(b); });
+  } else {
+    return list.sort(function (a, b) { return a[iteratee] - b[iteratee]; });
   }
 };
 
 // zip
 _.zip = function () {
   var argumentsArray = Array.prototype.slice.call(arguments);
-  var longestArray = argumentsArray.sort(function(a, b) {
+  var longestArray = argumentsArray.sort(function (a, b) {
     return b.length - a.length;
   })[0];
 
-  return longestArray.map(function(value, index) {
-    return argumentsArray.map(function(val) {
+  return longestArray.map(function (value, index) {
+    return argumentsArray.map(function (val) {
       return val[index];
     });
   });
 };
 
 // sortedIndex
-_.sortedIndex = function(array, obj) {
-    var value = obj;
-    var low = 0;
-    var high = array.length;
-    while (low < high) {
-      var mid = Math.floor((low + high) / 2);
-      if (array[mid] < value) low = mid + 1; 
-      else high = mid;
-    }
-    return low;
-  };
+_.sortedIndex = function (array, obj) {
+  var value = obj;
+  var low = 0;
+  var high = array.length;
+  while (low < high) {
+    var mid = Math.floor((low + high) / 2);
+    if (array[mid] < value) low = mid + 1;
+    else high = mid;
+  }
+  return low;
+};
 
-  // flatten
+// flatten
 _.flatten = function (list) {
   var result = [];
   for (var i = 0; i < list.length; i++) {
     if (Array.isArray(list[i])) {
       var temp = _.flatten(list[i]);
-      temp.forEach(function(value) { result.push(value); });
+      temp.forEach(function (value) { result.push(value); });
     } else {
       result.push(list[i]);
     }
@@ -250,52 +250,78 @@ _.flatten = function (list) {
 _.intersection = function () {
   var argumentsArray = Array.prototype.slice.call(arguments);
 
-    var result = [];
+  var result = [];
 
-    _.each(argumentsArray[0], function(item) {
-        var isShared = false;
+  _.each(argumentsArray[0], function (item) {
+    var isShared = false;
 
-      for (var i = 1; i < argumentsArray.length; i++) {
-        _.each(argumentsArray[i], function(check) {
-          if (item === check) {
-            isShared = true;
-          }
-        });
-      }
+    for (var i = 1; i < argumentsArray.length; i++) {
+      _.each(argumentsArray[i], function (check) {
+        if (item === check) {
+          isShared = true;
+        }
+      });
+    }
 
-      if (isShared) {
-        result.push(item);
-      }
+    if (isShared) {
+      result.push(item);
+    }
 
-    });
+  });
 
-    return result;
+  return result;
 };
 
 // difference
 _.difference = function (list) {
   var argumentsArray = Array.prototype.slice.call(arguments);
-    var results = [];
+  var results = [];
 
-    _.each(list, function(item) {
-      var isUnique = true;
+  _.each(list, function (item) {
+    var isUnique = true;
 
-      for (var i = 1; i < argumentsArray.length; i++) {
-        for (var j = 0; j < argumentsArray[i].length; j++) {
-          if (item === argumentsArray[i][j]) {
-            isUnique = false;
-          }
+    for (var i = 1; i < argumentsArray.length; i++) {
+      for (var j = 0; j < argumentsArray[i].length; j++) {
+        if (item === argumentsArray[i][j]) {
+          isUnique = false;
         }
       }
+    }
 
-      if (isUnique) {
-        results.push(item);
-      }
+    if (isUnique) {
+      results.push(item);
+    }
 
-    });
+  });
 
-    return results;
+  return results;
 };
+
+// indexOf (this time using a binary search)
+_.binaryIndexOf = function (searchElement) {
+    var minIndex = 0;
+    var maxIndex = this.length - 1;
+    var currentIndex;
+    var currentElement;
+ 
+    while (minIndex <= maxIndex) {
+        currentIndex = (minIndex + maxIndex) / 2 | 0;
+        currentElement = this[currentIndex];
+ 
+        if (currentElement < searchElement) {
+            minIndex = currentIndex + 1;
+        }
+        else if (currentElement > searchElement) {
+            maxIndex = currentIndex - 1;
+        }
+        else {
+            return currentIndex;
+        }
+    }
+ 
+    return -1;
+};
+
 
 if (typeof module !== 'undefined') {
   module.exports = _;
