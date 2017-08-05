@@ -377,7 +377,7 @@ describe('_', function () {
     });
 
     // sortedIndex
-    describe.only('#sortedIndex', function () {
+    describe('#sortedIndex', function () {
         it('is a function', function () {
             expect(_.sortedIndex).to.be.a('function');
         });
