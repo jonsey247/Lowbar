@@ -421,7 +421,7 @@ describe('_', function () {
   });
 
   // Binary indexOf
-    describe.only('#binaryIndexOf', function () {
+    describe('#binaryIndexOf', function () {
         it('is a function', function () {
             expect(_.binaryIndexOf).to.be.a('function');
         });
