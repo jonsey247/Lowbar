@@ -220,17 +220,17 @@ _.zip = function () {
 };
 
 // sortedIndex
-/* _.sortedIndex = function(array, obj, iteratee, context) {
-    iteratee = (iteratee, context, 1);
-    var value = iteratee(obj);
-    var low = 0, high = getLength(array);
+_.sortedIndex = function(array, obj) {
+    var value = obj;
+    var low = 0;
+    var high = array.length;
     while (low < high) {
       var mid = Math.floor((low + high) / 2);
-      if (iteratee(array[mid]) < value) low = mid + 1; 
+      if (array[mid] < value) low = mid + 1; 
       else high = mid;
     }
     return low;
-  }; */
+  };
 
   // flatten
 _.flatten = function (list) {
