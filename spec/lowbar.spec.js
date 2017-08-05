@@ -431,5 +431,8 @@ describe('_', function () {
             expect(test1).to.eql(1);
             expect(test2).to.eql(2);
         });
+        it('should return -1 if the value is not present in the array', function () {
+        expect(_.indexOf([1, 2, 3], 52)).to.eql(-1);
+    });
     });
 });
