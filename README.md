@@ -68,3 +68,4 @@ These are the core functions I have implamented;
 8. flatten
 9. intersection
 10. difference
+11. indexOf (again, this time with a binary search)
