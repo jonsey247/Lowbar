@@ -12,7 +12,7 @@ describe('_', function () {
         expect(_).to.be.an('object');
     });
 
-    describe.only('#identity', function () {
+    describe('#identity', function () {
         it('is a function', function () {
             expect(_.identity).to.be.a('function');
         });
@@ -63,11 +63,6 @@ describe('_', function () {
             var result = _.first([1, 2, 3, 4], 7);
             expect(result).to.eql([1, 2, 3, 4]);
         });
-
-        it('should receive an array', function () {
-            var result = _.first([1, 2, 3, 4]);
-            expect(result).to.equal(1);
-        });
     });
 
     // last
@@ -94,11 +89,6 @@ describe('_', function () {
         it('should return the array if n is greater than the length of the array', function () {
             var result = _.last([1, 2, 3, 4], 7);
             expect(result).to.eql([1, 2, 3, 4]);
-        });
-
-        it('should receive an array', function () {
-            var result = _.last([1, 2, 3, 4]);
-            expect(result).to.equal(4);
         });
     });
 
