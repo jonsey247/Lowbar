@@ -93,18 +93,27 @@ describe('_', function () {
     });
 
     // each
-    describe('#each', function () {
+    describe.only('#each', function () {
         it('is a function', function () {
             expect(_.each).to.be.a('function');
         });
 
-        it('should iterate through every item in the list', function () {
+        it('should iterate through every item an array', function () {
             var count = 0;
 
             function incrementCount() {
                 count++;
             }
             _.each([1, 2, 3, 4, 5], incrementCount);
+            expect(count).to.equal(5);
+        });
+        it('should iterate through every item an object', function () {
+            var count = 0;
+
+            function incrementCount() {
+                count++;
+            }
+            _.each({'a':1, 'b':2, 'c':3, 'd':4, 'e':5}, incrementCount);
             expect(count).to.equal(5);
         });
     });
