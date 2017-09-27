@@ -93,7 +93,7 @@ describe('_', function () {
     });
 
     // each
-    describe.only('#each', function () {
+    describe('#each', function () {
         it('is a function', function () {
             expect(_.each).to.be.a('function');
         });
