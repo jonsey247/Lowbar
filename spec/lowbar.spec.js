@@ -12,11 +12,13 @@ describe('_', function () {
         expect(_).to.be.an('object');
     });
 
-    describe('#identity', function () {
+    describe.only('#identity', function () {
         it('is a function', function () {
             expect(_.identity).to.be.a('function');
         });
         it('should return the same data type', function () {
+            var input = [1, 2, 3];
+            expect(_.identity(input)).to.equal(input);
             var result = _.identity([1, 2, 3]);
             expect(Array.isArray(result)).to.equal(true);
             var nums = _.identity(4567);
@@ -108,6 +110,7 @@ describe('_', function () {
 
         it('should iterate through every item in the list', function () {
             var count = 0;
+
             function incrementCount() {
                 count++;
             }
@@ -147,9 +150,20 @@ describe('_', function () {
         });
 
         it('should return a list filtered by the predicate', function () {
-            var result = _.filter([1, 2, 3, 4, 5, 6], function (num) { return num % 2 === 0; });
+            var result = _.filter([1, 2, 3, 4, 5, 6], function (num) {
+                return num % 2 === 0;
+            });
             expect(result).to.eql([2, 4, 6]);
-            var result2 = _.filter({ a: 1, b: 2, c: 3, d: 4, e: 5, f: 6 }, function (num) { return num % 2 === 0; });
+            var result2 = _.filter({
+                a: 1,
+                b: 2,
+                c: 3,
+                d: 4,
+                e: 5,
+                f: 6
+            }, function (num) {
+                return num % 2 === 0;
+            });
             expect(result2).to.eql([2, 4, 6]);
         });
     });
@@ -161,9 +175,20 @@ describe('_', function () {
         });
 
         it('should return a list filtered by the predicate', function () {
-            var result = _.reject([1, 2, 3, 4, 5, 6], function (num) { return num % 2 === 0; });
+            var result = _.reject([1, 2, 3, 4, 5, 6], function (num) {
+                return num % 2 === 0;
+            });
             expect(result).to.eql([1, 3, 5]);
-            var result2 = _.reject({ a: 1, b: 2, c: 3, d: 4, e: 5, f: 6 }, function (num) { return num % 2 === 0; });
+            var result2 = _.reject({
+                a: 1,
+                b: 2,
+                c: 3,
+                d: 4,
+                e: 5,
+                f: 6
+            }, function (num) {
+                return num % 2 === 0;
+            });
             expect(result2).to.eql([1, 3, 5]);
         });
     });
@@ -187,8 +212,16 @@ describe('_', function () {
         });
 
         it('returns a mapped array', function () {
-            expect(_.map([1, 2, 3], function (num) { return num * 3; })).to.eql([3, 6, 9]);
-            expect(_.map({ one: 1, two: 2, three: 3 }, function (num) { return num * 3; })).to.eql([3, 6, 9]);
+            expect(_.map([1, 2, 3], function (num) {
+                return num * 3;
+            })).to.eql([3, 6, 9]);
+            expect(_.map({
+                one: 1,
+                two: 2,
+                three: 3
+            }, function (num) {
+                return num * 3;
+            })).to.eql([3, 6, 9]);
         });
     });
 
@@ -224,7 +257,16 @@ describe('_', function () {
         });
 
         it('returns an array of extracted values', function () {
-            var stooges = [{ name: 'moe', age: 40 }, { name: 'larry', age: 50 }, { name: 'curly', age: 60 }];
+            var stooges = [{
+                name: 'moe',
+                age: 40
+            }, {
+                name: 'larry',
+                age: 50
+            }, {
+                name: 'curly',
+                age: 60
+            }];
             expect(_.pluck(stooges, 'name')).to.eql(['moe', 'larry', 'curly']);
         });
     });
@@ -236,7 +278,9 @@ describe('_', function () {
         });
 
         it('reduces a list to a single value', function () {
-            expect(_.reduce([1, 2, 3], function (memo, num) { return memo + num; }, 0)).to.equal(6);
+            expect(_.reduce([1, 2, 3], function (memo, num) {
+                return memo + num;
+            }, 0)).to.equal(6);
         });
     });
 
@@ -247,11 +291,15 @@ describe('_', function () {
         });
 
         it('returns false if not all list values pass the predicate test', function () {
-            expect(_.every([2, 4, 5], function (num) { return num % 2 == 0; })).to.equal(false);
+            expect(_.every([2, 4, 5], function (num) {
+                return num % 2 == 0;
+            })).to.equal(false);
         });
 
         it('returns true if all list values pass the predicate test', function () {
-            expect(_.every([2, 4], function (num) { return num % 2 == 0; })).to.equal(true);
+            expect(_.every([2, 4], function (num) {
+                return num % 2 == 0;
+            })).to.equal(true);
         });
     });
 
@@ -262,11 +310,15 @@ describe('_', function () {
         });
 
         it('returns true if some list values pass the predicate test', function () {
-            expect(_.some([2, 4, 5], function (num) { return num % 2 == 0; })).to.equal(true);
+            expect(_.some([2, 4, 5], function (num) {
+                return num % 2 == 0;
+            })).to.equal(true);
         });
 
         it('returns false if none of the list values pass the predicate test', function () {
-            expect(_.some([1, 3, 5], function (num) { return num % 2 == 0; })).to.equal(false);
+            expect(_.some([1, 3, 5], function (num) {
+                return num % 2 == 0;
+            })).to.equal(false);
         });
     });
 
@@ -277,7 +329,14 @@ describe('_', function () {
         });
 
         it('copies properties from the source object into the destination object', function () {
-            expect(_.extend({ name: 'steve' }, { age: 20 })).to.eql({ name: 'steve', age: 20 });
+            expect(_.extend({
+                name: 'steve'
+            }, {
+                age: 20
+            })).to.eql({
+                name: 'steve',
+                age: 20
+            });
         });
     });
 
@@ -288,8 +347,16 @@ describe('_', function () {
         });
 
         it('fills in properties in object with values from defaults', function () {
-            var iceCream = { flavor: 'chocolate' };
-            expect(_.defaults(iceCream, { flavor: 'vanilla', sprinkles: 'lots' })).to.eql({ flavor: 'chocolate', sprinkles: 'lots' });
+            var iceCream = {
+                flavor: 'chocolate'
+            };
+            expect(_.defaults(iceCream, {
+                flavor: 'vanilla',
+                sprinkles: 'lots'
+            })).to.eql({
+                flavor: 'chocolate',
+                sprinkles: 'lots'
+            });
         });
     });
 
@@ -315,7 +382,9 @@ describe('_', function () {
         });
 
         it('returns same value as original funcion', function () {
-            var double = function (n) { return 2 * n; };
+            var double = function (n) {
+                return 2 * n;
+            };
             var spy = sinon.spy(double);
             var memDouble = _.memoize(spy);
             memDouble(5);
@@ -325,10 +394,14 @@ describe('_', function () {
         });
 
         it('the returned function should have a cache prop', function () {
-            var double = function (n) { return 2 * n; };
+            var double = function (n) {
+                return 2 * n;
+            };
             var memDouble = _.memoize(double);
             memDouble(3);
-            expect(memDouble.cache).to.eql({ '3': 6 });
+            expect(memDouble.cache).to.eql({
+                '3': 6
+            });
         });
     });
 
@@ -350,7 +423,13 @@ describe('_', function () {
         });
 
         it('calls the method on each list value', function () {
-            expect(_.invoke([[5, 1, 7], [3, 2, 1]], 'sort')).to.eql([[1, 5, 7], [1, 2, 3]]);
+            expect(_.invoke([
+                [5, 1, 7],
+                [3, 2, 1]
+            ], 'sort')).to.eql([
+                [1, 5, 7],
+                [1, 2, 3]
+            ]);
         });
     });
 
@@ -361,7 +440,9 @@ describe('_', function () {
         });
 
         it('returns a list sorted by function', function () {
-            expect(_.sortBy([1, 2, 3, 4, 5, 6], function (num) { return Math.sin(num); })).to.eql([5, 4, 6, 3, 1, 2]);
+            expect(_.sortBy([1, 2, 3, 4, 5, 6], function (num) {
+                return Math.sin(num);
+            })).to.eql([5, 4, 6, 3, 1, 2]);
         });
     });
 
@@ -372,7 +453,12 @@ describe('_', function () {
         });
 
         it('zips together two arrays with elements of the same index paired together', function () {
-            expect(_.zip(['a', 'b', 'c', 'd'], [1, 2, 3])).to.eql([['a', 1], ['b', 2], ['c', 3], ['d', undefined]]);
+            expect(_.zip(['a', 'b', 'c', 'd'], [1, 2, 3])).to.eql([
+                ['a', 1],
+                ['b', 2],
+                ['c', 3],
+                ['d', undefined]
+            ]);
         });
     });
 
@@ -388,39 +474,43 @@ describe('_', function () {
     });
 
     // flatten
-  describe('#flatten', function () {
-    it('is a function', function () {
-      expect(_.flatten).to.be.a('function');
+    describe('#flatten', function () {
+        it('is a function', function () {
+            expect(_.flatten).to.be.a('function');
+        });
+
+        it('returns a flattened array', function () {
+            expect(_.flatten([1, [2],
+                [3, [
+                    [4]
+                ]]
+            ])).to.eql([1, 2, 3, 4]);
+        });
     });
 
-    it('returns a flattened array', function() {
-      expect(_.flatten([1, [2], [3, [[4]]]])).to.eql([1, 2, 3, 4]);
-    });
-  });
+    // intersection
+    describe('#intersection', function () {
+        it('is a function', function () {
+            expect(_.intersection).to.be.a('function');
+        });
 
-  // intersection
-  describe('#intersection', function () {
-    it('is a function', function () {
-      expect(_.intersection).to.be.a('function');
-    });
-
-    it('returns the intersection of all arrays passed', function() {
-      expect(_.intersection([1, 2, 3], [101, 2, 1, 10], [2, 1])).to.eql([1,2]);
-    });
-  });
-
-  // difference
-  describe('#difference', function () {
-    it('is a function', function () {
-      expect(_.difference).to.be.a('function');
+        it('returns the intersection of all arrays passed', function () {
+            expect(_.intersection([1, 2, 3], [101, 2, 1, 10], [2, 1])).to.eql([1, 2]);
+        });
     });
 
-    it('returns the values from the first array that are not present in the other arrays', function() {
-      expect(_.difference([1, 2, 3, 4, 5], [5, 2, 10])).to.eql([1,3,4]);
-    });
-  });
+    // difference
+    describe('#difference', function () {
+        it('is a function', function () {
+            expect(_.difference).to.be.a('function');
+        });
 
-  // Binary indexOf
+        it('returns the values from the first array that are not present in the other arrays', function () {
+            expect(_.difference([1, 2, 3, 4, 5], [5, 2, 10])).to.eql([1, 3, 4]);
+        });
+    });
+
+    // Binary indexOf
     describe('#binaryIndexOf', function () {
         it('is a function', function () {
             expect(_.binaryIndexOf).to.be.a('function');
@@ -432,7 +522,38 @@ describe('_', function () {
             expect(test2).to.eql(2);
         });
         it('should return -1 if the value is not present in the array', function () {
-        expect(_.indexOf([1, 2, 3], 52)).to.eql(-1);
+            expect(_.indexOf([1, 2, 3], 52)).to.eql(-1);
+        });
     });
-    });
+
+    // throttle
+    // describe('#throttle', function () {
+    //     it('is a function', function () {
+    //         expect(_.throttle).to.be.a('function');
+    //     });
+
+    //     it('should execute after delay', function () {
+    //         var hasHappened = false;
+    //         runs(function () {
+    //             var fn = underscore.debounce(function () {
+    //                 hasHappened = true;
+    //             }, 100);
+
+    //             fn();
+    //         });
+    //     });
+
+    //     it('should work', function () {
+    //         var hello = function () {
+    //             console.log('hello');
+    //         };
+    //         var func = _.throttle(hello, 1000);
+    //         func();                     // should be called
+    //         setTimeout(func, 500);      // should not be called
+    //         setTimeout(func, 1000);     // should be called
+    //         setTimeout(func, 1500);     // should not be called
+    //         setTimeout(func, 1900);     // should not be called
+    //         // expect(setTimeout(func, 500)).to.equal('hello')
+    //     });
+    // });
 });

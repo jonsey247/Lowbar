@@ -299,27 +299,64 @@ _.difference = function (list) {
 
 // indexOf (this time using a binary search)
 _.binaryIndexOf = function (searchElement) {
-    var minIndex = 0;
-    var maxIndex = this.length - 1;
-    var currentIndex;
-    var currentElement;
- 
-    while (minIndex <= maxIndex) {
-        currentIndex = (minIndex + maxIndex) / 2 | 0;
-        currentElement = this[currentIndex];
- 
-        if (currentElement < searchElement) {
-            minIndex = currentIndex + 1;
-        }
-        else if (currentElement > searchElement) {
-            maxIndex = currentIndex - 1;
-        }
-        else {
-            return currentIndex;
-        }
+  var minIndex = 0;
+  var maxIndex = this.length - 1;
+  var currentIndex;
+  var currentElement;
+
+  while (minIndex <= maxIndex) {
+    currentIndex = (minIndex + maxIndex) / 2 | 0;
+    currentElement = this[currentIndex];
+
+    if (currentElement < searchElement) {
+      minIndex = currentIndex + 1;
     }
- 
-    return -1;
+    else if (currentElement > searchElement) {
+      maxIndex = currentIndex - 1;
+    }
+    else {
+      return currentIndex;
+    }
+  }
+
+  return -1;
+};
+
+// throttle
+
+_.throttle = function (func, wait, options) {
+  var now = function () {
+    return (new Date()).getTime();
+  };
+  var context, args, result;
+  var timeout = null;
+  var previous = 0;
+  if (!options) options = {};
+  var later = function () {
+    previous = options.leading === false ? 0 : now();
+    timeout = null;
+    result = func.apply(context, args);
+    if (!timeout) context = args = null;
+  };
+  return function () {
+    
+    if (!previous && options.leading === false) previous = now;
+    var remaining = wait - (now - previous);
+    context = this;
+    args = arguments;
+    if (remaining <= 0 || remaining > wait) {
+      if (timeout) {
+        clearTimeout(timeout);
+        timeout = null;
+      }
+      previous = now;
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    } else if (!timeout && options.trailing !== false) {
+      timeout = setTimeout(later, remaining);
+    }
+    return result;
+  };
 };
 
 
