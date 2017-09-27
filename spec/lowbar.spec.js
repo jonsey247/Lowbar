@@ -119,14 +119,9 @@ describe('_', function () {
     });
 
     // indexOf
-    describe.only('#indexOf', function () {
+    describe('#indexOf', function () {
         it('is a function', function () {
             expect(_.indexOf).to.be.a('function');
-        });
-
-        it('should return a number', function () {
-            var result = _.indexOf([1, 2, 3]);
-            expect(result).to.be.a('number');
         });
 
         it('should return the index of the given value within the array', function () {
