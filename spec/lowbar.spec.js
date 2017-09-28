@@ -449,7 +449,7 @@ describe('_', function () {
     });
 
     // memoize
-    describe.only('#memoize', function () {
+    describe('#memoize', function () {
         it('is a function', function () {
             expect(_.memoize).to.be.a('function');
         });
