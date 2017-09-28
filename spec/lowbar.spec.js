@@ -113,7 +113,13 @@ describe('_', function () {
             function incrementCount() {
                 count++;
             }
-            _.each({'a':1, 'b':2, 'c':3, 'd':4, 'e':5}, incrementCount);
+            _.each({
+                'a': 1,
+                'b': 2,
+                'c': 3,
+                'd': 4,
+                'e': 5
+            }, incrementCount);
             expect(count).to.equal(5);
         });
     });
@@ -166,12 +172,15 @@ describe('_', function () {
             expect(_.reject).to.be.a('function');
         });
 
-        it('should return a list filtered by the predicate', function () {
+        it('should return an array filtered by the predicate', function () {
             var result = _.reject([1, 2, 3, 4, 5, 6], function (num) {
                 return num % 2 === 0;
             });
             expect(result).to.eql([1, 3, 5]);
-            var result2 = _.reject({
+        });
+
+        it('When passed an object should return an array filtered by the predicate', function () {
+            var result = _.reject({
                 a: 1,
                 b: 2,
                 c: 3,
@@ -181,8 +190,9 @@ describe('_', function () {
             }, function (num) {
                 return num % 2 === 0;
             });
-            expect(result2).to.eql([1, 3, 5]);
+            expect(result).to.eql([1, 3, 5]);
         });
+
     });
 
     // uniq
@@ -514,7 +524,7 @@ describe('_', function () {
             expect(test2).to.eql(2);
         });
         it('should return -1 if the value is not present in the array', function () {
-            expect(_.indexOf([1, 2, 3], 52)).to.eql(-1);
+            expect(_.binaryIndexOf.call([1, 2, 3], 52)).to.eql(-1);
         });
     });
 
