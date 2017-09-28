@@ -508,7 +508,7 @@ describe('_', function () {
     });
 
     // invoke
-    describe.only('#invoke', function () {
+    describe('#invoke', function () {
         it('is a function', function () {
             expect(_.invoke).to.be.a('function');
         });
