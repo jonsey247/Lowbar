@@ -2,6 +2,7 @@
 var path = require('path');
 var expect = require('chai').expect;
 var sinon = require('sinon');
+const underscore = require('underscore');
 
 var _ = require(path.join(__dirname, '..', './lowbar.js'));
 
@@ -484,8 +485,25 @@ describe('_', function () {
             expect(_.shuffle).to.be.a('function');
         });
 
-        it('returns a shuffled copy of the array', function () {
-            expect(_.shuffle([1, 2, 3, 4, 5, 6])).to.not.eql([1, 2, 3, 4, 5, 6]);
+        it('returns a new array', function () {
+            var test = [1, 2, 3, 4, 5, 6];
+            var result = _.shuffle(test);
+            expect(result).to.not.eql(test);
+        });
+
+        it('test if the new array is the same length as the original', function () {
+            var test = [1, 2, 3, 4, 5, 6];
+            var result = _.shuffle(test);
+            expect(result.length).to.eql(test.length);
+        });
+
+        it('test if the new arrays match after resorting', function () {
+            var test1 = [1, 2, 3, 4, 5, 6];
+            var result1 = _.shuffle(test1);
+            var result2 = _.shuffle(test1);
+            var sort1 = underscore.sortBy(result1);
+            var sort2 = underscore.sortBy(result2);
+            expect(sort1).to.eql(sort2);
         });
     });
 

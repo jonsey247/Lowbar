@@ -196,7 +196,7 @@ _.memoize = function (fn, hashFunction) {
 // shuffle
 _.shuffle = function (list) {
   var arrayCopy = Array.prototype.slice.call(list);
-
+    
   var results = [];
 
   for (var i = 0; i < list.length; i++) {
