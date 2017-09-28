@@ -208,7 +208,7 @@ describe('_', function () {
     });
 
     // map
-    describe.only('#map', function () {
+    describe('#map', function () {
         it('is a function', function () {
             expect(_.map).to.be.a('function');
         });
