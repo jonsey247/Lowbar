@@ -283,7 +283,7 @@ describe('_', function () {
     });
 
     // reduce
-    describe.only('#reduce', function () {
+    describe('#reduce', function () {
         it('is a function', function () {
             expect(_.reduce).to.be.a('function');
         });
