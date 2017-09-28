@@ -508,7 +508,7 @@ describe('_', function () {
     });
 
     // invoke
-    describe('#invoke', function () {
+    describe.only('#invoke', function () {
         it('is a function', function () {
             expect(_.invoke).to.be.a('function');
         });
@@ -521,6 +521,12 @@ describe('_', function () {
                 [1, 5, 7],
                 [1, 2, 3]
             ]);
+        });
+        it('calls the method toUpperCase', function () {
+            expect(_.invoke(['one', 'two', 'three'], 'toUpperCase')).to.eql(['ONE', 'TWO', 'THREE']);
+        });
+        it('calls the method slice at from and to a set index', function () {
+            expect(_.invoke(['one', 'two', 'three'], 'slice', 0,1)).to.eql(['o', 't', 't']);
         });
     });
 
