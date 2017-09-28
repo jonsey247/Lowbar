@@ -294,7 +294,11 @@ describe('_', function () {
             }, 0)).to.equal(6);
         });
         it('reduces a object to a single value', function () {
-            expect(_.reduce({'a':1, 'b':2, 'c':3}, function (memo, num) {
+            expect(_.reduce({
+                'a': 1,
+                'b': 2,
+                'c': 3
+            }, function (memo, num) {
                 return memo + num;
             }, 0)).to.equal(6);
         });
@@ -317,6 +321,19 @@ describe('_', function () {
                 return num % 2 == 0;
             })).to.equal(true);
         });
+
+        it('returns true if all object values pass the predicate test', function () {
+            expect(_.every({
+                'a': 2,
+                'b': 4
+            }, function (num) {
+                return num % 2 == 0;
+            })).to.equal(true);
+        });
+
+        it('returns false if no predicate passed', function () {
+            expect(_.every([2, 4, 5], function () {})).to.equal(false);
+        });
     });
 
     // some
@@ -331,10 +348,23 @@ describe('_', function () {
             })).to.equal(true);
         });
 
+        it('returns true if some object values pass the predicate test', function () {
+            expect(_.some({
+                'a': 2,
+                'b': 4
+            }, function (num) {
+                return num % 2 == 0;
+            })).to.equal(true);
+        });
+
         it('returns false if none of the list values pass the predicate test', function () {
             expect(_.some([1, 3, 5], function (num) {
                 return num % 2 == 0;
             })).to.equal(false);
+        });
+
+        it('returns false if no predicate passed', function () {
+            expect(_.some([1, 3, 5], function () {})).to.equal(false);
         });
     });
 

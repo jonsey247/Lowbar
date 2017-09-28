@@ -138,12 +138,22 @@ _.every = function (list, predicate) {
 
 // some
 _.some = function (list, predicate) {
-  for (let i = 0; i < list.length; i++) {
-    if (predicate(list[i])) {
-      return true;
+  if (Array.isArray(list)) {
+
+    for (let i = 0; i < list.length; i++) {
+      if (predicate(list[i])) {
+        return true;
+      }
     }
+    return false;
+  } else {
+    for (var key in list) {
+      if (predicate(list[key])) {
+        return true;
+      }
+    }
+    return false;
   }
-  return false;
 };
 
 // extend
