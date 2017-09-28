@@ -397,7 +397,7 @@ describe('_', function () {
                 home: 'Manchester'
             });
         });
-                it('copies properties from the source object into the destination object and ignores properties already existing on the destination object', function () {
+        it('copies properties from the source object into the destination object and ignores properties already existing on the destination object', function () {
             expect(_.extend({
                 name: 'steve'
             }, {
@@ -449,12 +449,12 @@ describe('_', function () {
     });
 
     // memoize
-    describe('#memoize', function () {
+    describe.only('#memoize', function () {
         it('is a function', function () {
             expect(_.memoize).to.be.a('function');
         });
 
-        it('returns same value as original funcion', function () {
+        it('returns number of times the function is called', function () {
             var double = function (n) {
                 return 2 * n;
             };
