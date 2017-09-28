@@ -283,13 +283,18 @@ describe('_', function () {
     });
 
     // reduce
-    describe('#reduce', function () {
+    describe.only('#reduce', function () {
         it('is a function', function () {
             expect(_.reduce).to.be.a('function');
         });
 
-        it('reduces a list to a single value', function () {
+        it('reduces a array to a single value', function () {
             expect(_.reduce([1, 2, 3], function (memo, num) {
+                return memo + num;
+            }, 0)).to.equal(6);
+        });
+        it('reduces a object to a single value', function () {
+            expect(_.reduce({'a':1, 'b':2, 'c':3}, function (memo, num) {
                 return memo + num;
             }, 0)).to.equal(6);
         });

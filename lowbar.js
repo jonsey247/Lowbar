@@ -20,8 +20,7 @@ _.last = function (array, num) {
   }
   if (array.length < num) {
     return array;
-  }
-  else {
+  } else {
     return array.slice(array.length - num, array.length);
   }
 };
@@ -50,7 +49,8 @@ _.filter = function (list, predicate) {
     if (predicate(list[key])) {
       result.push(list[key]);
     }
-  } return result;
+  }
+  return result;
 };
 
 // reject 
@@ -60,7 +60,8 @@ _.reject = function (list, predicate) {
     if (!predicate(list[key])) {
       result.push(list[key]);
     }
-  } return result;
+  }
+  return result;
 };
 
 // uniq
@@ -110,10 +111,19 @@ _.pluck = function (list, propertyName) {
 
 // reduce
 _.reduce = function (list, iteratee, memo) {
-  for (let i = 0; i < list.length; i++) {
-    memo = iteratee(memo, list[i]);
+
+  if (Array.isArray(list)) {
+    for (let i = 0; i < list.length; i++) {
+      memo = iteratee(memo, list[i]);
+    }
+    return memo;
+
+  } else {
+    for (var key in list) {
+      memo = iteratee(memo, list[key]);
+    }
+    return memo;
   }
-  return memo;
 };
 
 // every
@@ -199,9 +209,13 @@ _.invoke = function (list, methodName) {
 // sortBy
 _.sortBy = function (list, iteratee) {
   if (typeof (iteratee) === 'function') {
-    return list.sort(function (a, b) { return iteratee(a) - iteratee(b); });
+    return list.sort(function (a, b) {
+      return iteratee(a) - iteratee(b);
+    });
   } else {
-    return list.sort(function (a, b) { return a[iteratee] - b[iteratee]; });
+    return list.sort(function (a, b) {
+      return a[iteratee] - b[iteratee];
+    });
   }
 };
 
@@ -238,7 +252,9 @@ _.flatten = function (list) {
   for (var i = 0; i < list.length; i++) {
     if (Array.isArray(list[i])) {
       var temp = _.flatten(list[i]);
-      temp.forEach(function (value) { result.push(value); });
+      temp.forEach(function (value) {
+        result.push(value);
+      });
     } else {
       result.push(list[i]);
     }
@@ -310,11 +326,9 @@ _.binaryIndexOf = function (searchElement) {
 
     if (currentElement < searchElement) {
       minIndex = currentIndex + 1;
-    }
-    else if (currentElement > searchElement) {
+    } else if (currentElement > searchElement) {
       maxIndex = currentIndex - 1;
-    }
-    else {
+    } else {
       return currentIndex;
     }
   }
@@ -339,7 +353,7 @@ _.throttle = function (func, wait, options) {
     if (!timeout) context = args = null;
   };
   return function () {
-    
+
     if (!previous && options.leading === false) previous = now;
     var remaining = wait - (now - previous);
     context = this;
