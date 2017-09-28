@@ -384,6 +384,33 @@ describe('_', function () {
                 age: 20
             });
         });
+        it('copies properties from the source object into the destination object', function () {
+            expect(_.extend({
+                name: 'steve'
+            }, {
+                age: 20
+            }, {
+                home: 'Manchester'
+            })).to.eql({
+                name: 'steve',
+                age: 20,
+                home: 'Manchester'
+            });
+        });
+                it('copies properties from the source object into the destination object and ignores properties already existing on the destination object', function () {
+            expect(_.extend({
+                name: 'steve'
+            }, {
+                age: 20,
+                name: 'steve'
+            }, {
+                home: 'Manchester'
+            })).to.eql({
+                name: 'steve',
+                age: 20,
+                home: 'Manchester'
+            });
+        });
     });
 
     // defaults

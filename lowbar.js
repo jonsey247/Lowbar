@@ -157,8 +157,8 @@ _.some = function (list, predicate) {
 };
 
 // extend
-_.extend = function (destination, source) {
-  return Object.assign({}, destination, source);
+_.extend = function (destination, ...source) {
+  return Object.assign({}, destination, ...source);
 };
 
 // defaults
